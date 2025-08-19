@@ -54,7 +54,7 @@ filterButtons.forEach(button => {
     });
 });
 
-// AJAX form submission with reCAPTCHA
+// Contact Form Submission (Formsubmit.co)
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
@@ -62,24 +62,16 @@ contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
 
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-        formStatus.textContent = 'Please verify that you are not a robot.';
-        formStatus.className = 'form-status error';
-        return;
-    }
-    formData.append('g-recaptcha-response', recaptchaResponse);
-
-    fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
-    .then(response => response.json())
-    .then(data => {
-        formStatus.textContent = data.message;
-        formStatus.className = 'form-status ' + (data.success ? 'success' : 'error');
-        if (data.success) {
-            contactForm.reset();
-            grecaptcha.reset();
-            setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-        }
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        formStatus.textContent = 'Thank you! Your message has been sent.';
+        formStatus.className = 'form-status success';
+        contactForm.reset();
+        setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
     })
     .catch(error => {
         formStatus.textContent = 'Oops! There was a problem submitting your form.';
