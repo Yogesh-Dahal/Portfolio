@@ -54,33 +54,6 @@ filterButtons.forEach(button => {
     });
 });
 
-// Contact Form Submission (Formsubmit.co)
-// Contact Form Submission (Formsubmit.co)
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-
-contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-
-    fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-        .then(response => {
-            formStatus.textContent = 'Thank you! Your message has been sent.';
-            formStatus.className = 'form-status success';
-            contactForm.reset();
-            setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-        })
-        .catch(error => {
-            formStatus.textContent = 'Oops! There was a problem submitting your form.';
-            formStatus.className = 'form-status error';
-        });
-});
-
-
 // Footer Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
