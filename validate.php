@@ -17,7 +17,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // ---------------- Google reCAPTCHA ---------------- //
-$recaptchaSecret = "6Ld2KqsrAAAAALqgQLldFhlvbEDAlumF4Y2XXX6n";
+$recaptchaSecret = "6LflSqsrAAAAAEEA1Gd62g-5QlOdsTZ4Qo8xJdNg";
 $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
 
 if (empty($recaptchaResponse)) {
