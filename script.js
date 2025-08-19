@@ -55,10 +55,11 @@ filterButtons.forEach(button => {
 });
 
 // Contact Form Submission (Formsubmit.co)
+// Contact Form Submission (Formsubmit.co)
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const formData = new FormData(this);
 
@@ -67,17 +68,18 @@ contactForm.addEventListener('submit', function(e) {
         body: formData,
         headers: { 'Accept': 'application/json' }
     })
-    .then(response => {
-        formStatus.textContent = 'Thank you! Your message has been sent.';
-        formStatus.className = 'form-status success';
-        contactForm.reset();
-        setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-    })
-    .catch(error => {
-        formStatus.textContent = 'Oops! There was a problem submitting your form.';
-        formStatus.className = 'form-status error';
-    });
+        .then(response => {
+            formStatus.textContent = 'Thank you! Your message has been sent.';
+            formStatus.className = 'form-status success';
+            contactForm.reset();
+            setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
+        })
+        .catch(error => {
+            formStatus.textContent = 'Oops! There was a problem submitting your form.';
+            formStatus.className = 'form-status error';
+        });
 });
+
 
 // Footer Year
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -97,7 +99,7 @@ fadeElements.forEach(el => appearOnScroll.observe(el));
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
